@@ -8,38 +8,41 @@
 @font-face{font-family:Mont;font-weight:600;src:url(fonts/mont-6.ttf)}
 @page{size:96mm 56mm;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#14213D;--gold:#C9A227;--ink:#1d2433;--muted:#6b7385}
-/* page = 90x50mm card + 3mm bleed each side; keep text >= 4mm inside trim */
+/* deep blue harmonised with the KSU blue; teal accent taken from the Digest mark */
+:root{--deep:#0B3B5C;--blue:#0A6FA0;--teal:#3FBFCB;--ink:#1d2433;--muted:#4f5868}
+/* page = 90x50mm card + 3mm bleed each side; all text >= 4mm inside the trim */
 .page{width:96mm;height:56mm;position:relative;overflow:hidden;page-break-after:always;background:#fff;color:var(--ink)}
 .ar{direction:rtl;font-family:Plex,sans-serif}
 .en{direction:ltr;font-family:Mont,Plex,sans-serif}
 .ltr{direction:ltr;unicode-bidi:isolate}
 
-.content{position:absolute;top:6.5mm;left:7mm;right:7mm;bottom:14mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6mm;text-align:center}
-.logos{display:flex;align-items:center;justify-content:center;gap:5mm}
-.logos .sep{width:.25mm;height:9mm;background:#d5d8de}
+/* footer band: visible 9mm (card y 41-50mm) */
+.foot{position:absolute;left:0;right:0;bottom:0;height:12mm;background:var(--deep);color:#fff}
+.foot i{position:absolute;left:0;right:0;top:0;height:.6mm;background:var(--teal)}
+.foot .wa{position:absolute;left:0;right:0;top:.6mm;height:8.4mm;display:flex;align-items:center;justify-content:center;gap:2.4mm}
+.wa svg{width:4.4mm;height:4.4mm;fill:none;stroke:var(--teal);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.wa .lbl{font-size:7.2pt;color:rgba(255,255,255,.8);line-height:1.15}
+.wa .num{font-family:Mont;font-weight:600;font-size:10pt;letter-spacing:.4pt}
+
+/* Arabic side */
+.ar .content{position:absolute;top:7mm;left:7mm;right:7mm;bottom:15mm;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5.5mm;text-align:center}
+.logos{display:flex;align-items:center;justify-content:center;gap:5.5mm}
+.logos .sep{width:.25mm;height:8.5mm;background:#d5d8de}
 .logo{display:block;object-fit:contain}
-.logo.ksumc{height:11.5mm}
-.logo.digest{height:6.8mm}
+.logo.ksumc{height:10.5mm}
+.logo.digest{height:7.6mm}
+.ar .name{font-weight:700;font-size:14.5pt;color:var(--deep);line-height:1.2}
+.ar .title{font-weight:600;font-size:9.5pt;color:var(--blue);margin-top:.6mm}
 
-.name{font-weight:700;color:var(--navy);line-height:1.2}
-.ar .name{font-size:13pt}
-.en .name{font-family:Mont;font-weight:600;font-size:10.5pt;letter-spacing:.3pt}
-.title{color:var(--gold);font-weight:600;margin-top:.8mm}
-.ar .title{font-size:8pt}
-.en .title{font-size:7pt}
-.aff{color:var(--muted);margin-top:.5mm}
-.ar .aff{font-size:6.2pt}
-.en .aff{font-size:5.1pt}
-.aff .dot{color:#c3c7cf;margin:0 1.4mm}
-
-.foot{position:absolute;left:0;right:0;bottom:0;height:12mm;background:var(--navy);color:#fff}
-.foot i{position:absolute;left:0;right:0;top:0;height:.7mm;background:var(--gold)}
-/* visible band = 9mm (from 44mm to 53mm); center text in it */
-.foot .wa{position:absolute;left:0;right:0;top:.7mm;height:8.3mm;display:flex;align-items:center;justify-content:center;gap:2.2mm}
-.wa svg{width:4.2mm;height:4.2mm;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.wa .lbl{font-size:7pt;color:rgba(255,255,255,.75)}
-.wa .num{font-family:Mont;font-weight:600;font-size:9.5pt;letter-spacing:.4pt}
+/* English side */
+.en .content{position:absolute;top:7mm;left:7.5mm;right:7.5mm;bottom:15mm;display:flex;align-items:center;justify-content:space-between;gap:5mm}
+.en .name{font-weight:600;font-size:11pt;color:var(--deep);line-height:1.25;letter-spacing:.1pt}
+.en .title{font-weight:600;font-size:7.6pt;color:var(--blue);margin-top:.8mm}
+.en .rule{width:9mm;height:.5mm;background:var(--teal);margin:2.6mm 0 2.2mm}
+.en .aff{font-size:6.8pt;color:var(--muted);line-height:1.55}
+.qr{display:flex;flex-direction:column;align-items:center;gap:1.2mm;flex:none}
+.qr img{width:16mm;height:16mm;display:block}
+.qr span{font-size:5.6pt;color:var(--muted);text-align:center;line-height:1.3}
 </style></head><body>
 
 <!-- الوجه العربي -->
@@ -53,28 +56,24 @@
     <div>
       <div class="name">د. ياسر عبدالله الهزاني</div>
       <div class="title">استشاري طب الأسرة</div>
-      <div class="aff">المدينة الطبية بجامعة الملك سعود<span class="dot">|</span>مركز تكامل الرعاية الطبي (هضم)</div>
     </div>
   </div>
   <div class="foot"><i></i><div class="wa">
     <svg viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8a5 5 0 0 1-2.8-2.8l.8-1-1-2z"/></svg>
-    <span class="lbl">واتساب</span><span class="num ltr">053 649 9897</span>
+    <span class="lbl">واتساب للتواصل والمواعيد</span><span class="num ltr">053 649 9897</span>
   </div></div>
 </section>
 
 <!-- English side -->
 <section class="page en">
   <div class="content">
-    <div class="logos">
-      <img class="logo ksumc" src="logos/ksumc.png" alt="">
-      <div class="sep"></div>
-      <img class="logo digest" src="logos/digest.png" alt="">
-    </div>
     <div>
       <div class="name">Dr. Yasir A. Alhuzani</div>
       <div class="title">Family Medicine Consultant</div>
-      <div class="aff">King Saud University Medical City<span class="dot">|</span>Takamul Al-Riaya Medical Center (Digest)</div>
+      <div class="rule"></div>
+      <div class="aff">King Saud University Medical City<br>Takamul Al-Riaya Medical Center (Digest)</div>
     </div>
+    <div class="qr"><img src="logos/wa-qr.svg" alt=""><span>Scan to chat<br>on WhatsApp</span></div>
   </div>
   <div class="foot"><i></i><div class="wa">
     <svg viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8a5 5 0 0 1-2.8-2.8l.8-1-1-2z"/></svg>
