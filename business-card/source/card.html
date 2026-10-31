@@ -8,48 +8,69 @@
 @font-face{font-family:Mont;font-weight:600;src:url(fonts/mont-6.ttf)}
 @page{size:96mm 56mm;margin:0}
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#14213D;--gold:#C9A227;--ink:#1d2433;--muted:#6b7385;--paper:#FBFAF7}
+:root{--navy:#14213D;--gold:#C9A227;--ink:#1d2433;--muted:#6b7385;--paper:#FFFFFF}
 body{font-family:Plex,sans-serif}
 .page{width:96mm;height:56mm;position:relative;overflow:hidden;page-break-after:always}
-/* safe area: 3mm bleed + 4mm margin = 7mm from page edge */
-.front{background:var(--navy);color:#fff}
-.front .ring{position:absolute;left:-14mm;bottom:-22mm;width:52mm;height:52mm;border:0.35mm solid rgba(201,162,39,.35);border-radius:50%}
-.front .ring.r2{left:-6mm;bottom:-30mm;width:52mm;height:52mm;border-color:rgba(201,162,39,.18)}
-.front .content{position:absolute;inset:7mm;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-.mark{width:11mm;height:11mm;border:0.4mm solid var(--gold);display:flex;align-items:center;justify-content:center;transform:rotate(45deg);margin-bottom:5mm;margin-right:1.5mm}
-.mark span{transform:rotate(-45deg);font-weight:700;font-size:13pt;color:var(--gold);line-height:1}
-.name{font-weight:700;font-size:15pt;line-height:1.25}
-.title{font-weight:300;font-size:8.5pt;color:var(--gold);margin-top:1mm;letter-spacing:.2pt}
-.company{position:absolute;left:7mm;top:7mm;font-family:Mont;font-weight:600;font-size:6.5pt;letter-spacing:1.6pt;color:rgba(255,255,255,.75);direction:ltr}
-.back{background:var(--paper);color:var(--ink)}
-.back .bar{position:absolute;top:0;bottom:0;right:0;width:9mm;background:var(--navy)}
-.back .bar i{position:absolute;top:0;bottom:0;left:0;width:0.8mm;background:var(--gold)}
-.back .content{position:absolute;top:7mm;bottom:7mm;right:16mm;left:7mm;display:flex;flex-direction:column;justify-content:center;gap:2.3mm}
-.row{display:flex;align-items:center;gap:2.5mm;font-size:7.5pt}
-.row .ic{width:4.6mm;height:4.6mm;border-radius:50%;background:var(--navy);flex:none;display:flex;align-items:center;justify-content:center}
-.row .ic svg{width:2.6mm;height:2.6mm;fill:none;stroke:var(--gold);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.row .v{font-weight:400}
-.ltr{direction:ltr;unicode-bidi:isolate;font-family:Mont,Plex;font-size:7pt}
-.back .co{font-weight:600;font-size:9pt;color:var(--navy);margin-bottom:1mm}
-.back .co small{display:block;font-weight:300;font-size:6.5pt;color:var(--muted)}
+/* trim = 3mm in from page edge; safe area = 7mm in */
+.ltr{direction:ltr;unicode-bidi:isolate}
+
+/* FRONT: identity + logos (white so logos print correctly) */
+.front{background:var(--paper);color:var(--ink)}
+.front .foot{position:absolute;left:0;right:0;bottom:0;height:7.5mm;background:var(--navy)}
+.front .foot i{position:absolute;left:0;right:0;top:0;height:.7mm;background:var(--gold)}
+.front .content{position:absolute;top:6.5mm;bottom:10mm;left:7mm;right:7mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
+.logos{display:flex;align-items:center;justify-content:center;gap:4mm;height:11mm}
+.logos .sep{width:.25mm;height:9mm;background:#d5d8de}
+.logo{height:11mm;max-width:32mm;object-fit:contain}
+.ph{height:11mm;width:28mm;border:.25mm dashed #9aa1ae;border-radius:1mm;display:flex;align-items:center;justify-content:center;font-size:5pt;color:#8a90a0;line-height:1.3;padding:0 1mm}
+.name{font-weight:700;font-size:13pt;color:var(--navy);line-height:1.2}
+.ename{font-family:Mont;font-weight:600;font-size:6.6pt;letter-spacing:.9pt;color:var(--navy);margin-top:.6mm}
+.title{font-size:7.2pt;color:var(--gold);font-weight:600;margin-top:1.2mm}
+.title .ltr{font-family:Mont;font-weight:400;font-size:6pt;color:var(--muted)}
+.title .dot{color:#c3c7cf;margin:0 1.2mm}
+
+/* BACK: contacts on navy */
+.back{background:var(--navy);color:#fff}
+.back .ring{position:absolute;left:-16mm;top:-20mm;width:50mm;height:50mm;border:.35mm solid rgba(201,162,39,.30);border-radius:50%}
+.back .ring.r2{left:-24mm;top:-12mm;border-color:rgba(201,162,39,.15)}
+.back .content{position:absolute;top:7mm;bottom:7mm;right:8mm;left:7mm;display:flex;flex-direction:column;justify-content:center;gap:2.4mm}
+.row{display:flex;align-items:center;gap:2.6mm}
+.ic{width:5mm;height:5mm;border-radius:50%;border:.3mm solid var(--gold);flex:none;display:flex;align-items:center;justify-content:center}
+.ic svg{width:2.7mm;height:2.7mm;fill:none;stroke:var(--gold);stroke-width:2.1;stroke-linecap:round;stroke-linejoin:round}
+.row .lbl{font-size:5.6pt;color:rgba(255,255,255,.6);display:block;line-height:1.1}
+.row .v{font-family:Mont;font-size:7.4pt;line-height:1.25}
+.row .v.ar{font-family:Plex;font-size:7.4pt}
 </style></head><body>
+
 <section class="page front">
-  <div class="ring"></div><div class="ring r2"></div>
-  <div class="company">COMPANY NAME</div>
   <div class="content">
-    <div class="mark"><span>ع</span></div>
-    <div class="name">الاسم الكامل هنا</div>
-    <div class="title">المسمى الوظيفي</div>
+    <div class="logos">
+      <!-- استبدل العنصر .ph بـ <img class="logo" src="logos/ksumc.png"> -->
+      <div class="ph">شعار المدينة الطبية<br>جامعة الملك سعود</div>
+      <div class="sep"></div>
+      <!-- استبدل العنصر .ph بـ <img class="logo" src="logos/takamul.png"> -->
+      <div class="ph">شعار مركز<br>تكامل الرعاية الطبي</div>
+    </div>
+    <div>
+      <div class="name">د. ياسر عبدالله الهزاني</div>
+      <div class="ename ltr">DR. YASIR A. ALHUZANI</div>
+      <div class="title">استشاري طب الأسرة<span class="dot">•</span><span class="ltr">Family Medicine Consultant</span></div>
+    </div>
   </div>
+  <div class="foot"><i></i></div>
 </section>
+
 <section class="page back">
-  <div class="bar"><i></i></div>
+  <div class="ring"></div><div class="ring r2"></div>
   <div class="content">
-    <div class="co">اسم الشركة أو النشاط<small>عبارة تعريفية قصيرة</small></div>
-    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg></span><span class="v ltr">+966 5X XXX XXXX</span></div>
-    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="v ltr">name@company.com</span></div>
-    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="v ltr">www.company.com</span></div>
-    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span class="v">الرياض، المملكة العربية السعودية</span></div>
+    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg></span>
+      <span><span class="lbl">الجوال</span><span class="v ltr">+966 54 321 6039</span></span></div>
+    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3.5 20.5l1.3-4.2A8.5 8.5 0 1 1 8 19.4z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8a5 5 0 0 1-2.8-2.8l.8-1-1-2z"/></svg></span>
+      <span><span class="lbl">واتساب</span><span class="v ltr">+966 53 649 9897</span></span></div>
+    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+      <span><span class="lbl">البريد الإلكتروني</span><span class="v ltr">Dr.YasirFM@gmail.com</span></span></div>
+    <div class="row"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+      <span><span class="lbl">المدينة</span><span class="v ar">الرياض، المملكة العربية السعودية</span></span></div>
   </div>
 </section>
 </body></html>
