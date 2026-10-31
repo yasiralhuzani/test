@@ -19,15 +19,17 @@ body{font-family:Plex,sans-serif}
 .front .foot{position:absolute;left:0;right:0;bottom:0;height:7.5mm;background:var(--navy)}
 .front .foot i{position:absolute;left:0;right:0;top:0;height:.7mm;background:var(--gold)}
 .front .content{position:absolute;top:6.5mm;bottom:10mm;left:7mm;right:7mm;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center}
-.logos{display:flex;align-items:center;justify-content:center;gap:4mm;height:11mm}
+.logos{display:flex;align-items:center;justify-content:center;gap:5mm;height:12mm}
 .logos .sep{width:.25mm;height:9mm;background:#d5d8de}
-.logo{height:11mm;max-width:32mm;object-fit:contain}
-.ph{height:11mm;width:28mm;border:.25mm dashed #9aa1ae;border-radius:1mm;display:flex;align-items:center;justify-content:center;font-size:5pt;color:#8a90a0;line-height:1.3;padding:0 1mm}
+.logo{object-fit:contain;display:block}
+.logo.ksumc{height:12mm}
+.logo.digest{height:7mm}
 .name{font-weight:700;font-size:13pt;color:var(--navy);line-height:1.2}
 .ename{font-family:Mont;font-weight:600;font-size:6.6pt;letter-spacing:.9pt;color:var(--navy);margin-top:.6mm}
 .title{font-size:7.2pt;color:var(--gold);font-weight:600;margin-top:1.2mm}
-.title .ltr{font-family:Mont;font-weight:400;font-size:6pt;color:var(--muted)}
-.title .dot{color:#c3c7cf;margin:0 1.2mm}
+.title{font-size:8pt}
+.aff{font-size:6.2pt;color:var(--muted);margin-top:.4mm}
+.aff .dot{color:#c3c7cf;margin:0 1.5mm}
 
 /* BACK: contacts on navy */
 .back{background:var(--navy);color:#fff}
@@ -45,16 +47,15 @@ body{font-family:Plex,sans-serif}
 <section class="page front">
   <div class="content">
     <div class="logos">
-      <!-- استبدل العنصر .ph بـ <img class="logo" src="logos/ksumc.png"> -->
-      <div class="ph">شعار المدينة الطبية<br>جامعة الملك سعود</div>
+      <img class="logo ksumc" src="logos/ksumc.png" alt="">
       <div class="sep"></div>
-      <!-- استبدل العنصر .ph بـ <img class="logo" src="logos/takamul.png"> -->
-      <div class="ph">شعار مركز<br>تكامل الرعاية الطبي</div>
+      <img class="logo digest" src="logos/digest.png" alt="">
     </div>
     <div>
       <div class="name">د. ياسر عبدالله الهزاني</div>
       <div class="ename ltr">DR. YASIR A. ALHUZANI</div>
-      <div class="title">استشاري طب الأسرة<span class="dot">•</span><span class="ltr">Family Medicine Consultant</span></div>
+      <div class="title">استشاري طب الأسرة</div>
+      <div class="aff">المدينة الطبية بجامعة الملك سعود<span class="dot">|</span>مركز تكامل الرعاية الطبي (هضم)</div>
     </div>
   </div>
   <div class="foot"><i></i></div>
